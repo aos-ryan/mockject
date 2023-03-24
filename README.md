@@ -1,4 +1,4 @@
-# aframe-oimo
+# aos-mockject
 
 ## Build Setup
 
