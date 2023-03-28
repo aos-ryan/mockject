@@ -1,5 +1,5 @@
 <template>
-  <ARScene />
+  <WorldPortal />
 </template>
 
 <script>
