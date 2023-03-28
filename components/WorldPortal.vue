@@ -8,11 +8,12 @@
 
     <!-- Scene -->
     <a-scene
+      xrextras-loading
+      xrextras-runtime-error
       xrweb="allowedDevices: any; disableDefaultEnvironment: true"
       renderer="colorManagement: true;"
       tap-to-place-portal
       update-score
-      inspector
     >
       <!-- Assets -->
       <a-assets>
@@ -36,7 +37,6 @@
         raycaster="objects: .collidible"
         position="0 9 11"
         portal-camera
-        collider-check
       >
       </a-camera>
       <!-- Hider walls -->

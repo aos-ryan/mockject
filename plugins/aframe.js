@@ -5,16 +5,15 @@ import { updateScore } from '~/assets/js/updateScore.js'
 import {
   portalCameraComponent,
   tapToPlacePortalComponent,
-  promptFlowComponent,
   spinComponent,
 } from '~/assets/js/portal.js'
+import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
 
 AFRAME.registerComponent('create-collectible', createCollectible)
 AFRAME.registerComponent('update-score', updateScore)
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('spin', spinComponent)
-AFRAME.registerComponent('prompt-flow', promptFlowComponent)
 AFRAME.registerComponent('tap-to-place-portal', tapToPlacePortalComponent)
 AFRAME.registerComponent('auto-play-video', {
   schema: {
@@ -25,3 +24,5 @@ AFRAME.registerComponent('auto-play-video', {
     v.play()
   },
 })
+
+AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
