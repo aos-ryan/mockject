@@ -8,9 +8,11 @@ import {
   spinComponent,
 } from '~/assets/js/portal.js'
 import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
+import { startPractice } from '~/assets/js/startPractice'
 
 AFRAME.registerComponent('create-collectible', createCollectible)
 AFRAME.registerComponent('update-score', updateScore)
+AFRAME.registerComponent('start-practice', startPractice)
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('spin', spinComponent)

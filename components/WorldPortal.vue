@@ -35,7 +35,7 @@
         id="camera"
         cursor="fuse: false; rayOrigin: mouse;"
         raycaster="objects: .collidible"
-        position="0 9 11"
+        position="0 9 9"
         portal-camera
       >
       </a-camera>
@@ -114,10 +114,30 @@
 
       <!-- Entities -->
       <a-entity id="portal-contents">
-        <a-entity create-collectible="position: 8 9 -15; value: 1"> </a-entity>
+        <a-entity
+          id="info-panel"
+          gltf-model="/models/information_panel.glb"
+          position="0 4.5 -6"
+          scale="3 3 3"
+          class="collidible"
+          start-practice
+        >
+          <a-entity
+            text="value: Start Practice; align: center; font: dejavu"
+            position="0 1.1 0.3"
+            animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
+          ></a-entity>
+        </a-entity>
 
         <a-entity
-          create-collectible="position: -6 9 -11; value: 3"
+          id="collectible"
+          create-collectible="position: 2 9 -15; value: 1"
+        >
+        </a-entity>
+
+        <a-entity
+          id="collectible"
+          create-collectible="position: -2 9 -11; value: 3"
           scale="2 2 2"
         >
         </a-entity>
@@ -172,6 +192,7 @@ div {
   pointer-events: none;
 }
 #score-title {
+  display: none;
   position: absolute;
   z-index: 11;
   top: 0;

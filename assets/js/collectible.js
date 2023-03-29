@@ -27,7 +27,6 @@ const createCollectible = {
 
     // set attributes of the a-frame entity component based on passed properties
     collectible.setAttribute('position', this.data.position)
-    collectible.setAttribute('class', 'collidible')
 
     // set the animation attributes to handle the rotation, click, and collected states
     collectible.setAttribute('animation', {
