@@ -4,7 +4,7 @@
       xrextras-loading
       xrextras-runtime-error
       renderer="colorManagement: true"
-      xrweb="allowedDevices: any; disableDefaultEnvironment: true"
+      xrweb="allowedDevices: mobile; disableDefaultEnvironment: true"
     >
       <a-assets>
         <img id="skybox-img" src="/textures/skybox.jpg" />
