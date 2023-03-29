@@ -10,7 +10,7 @@
     <a-scene
       xrextras-loading
       xrextras-runtime-error
-      xrweb="allowedDevices: mobile; disableDefaultEnvironment: true"
+      xrweb="allowedDevices: any; disableDefaultEnvironment: true"
       renderer="colorManagement: true;"
       tap-to-place-portal
       update-score
