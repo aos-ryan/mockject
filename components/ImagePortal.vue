@@ -26,8 +26,7 @@
           id="ball"
           position="0 0 -10"
           scale="0.3 0.3 0.3"
-          geometry="primitive: sphere"
-          material="src: #earth-tex"
+          gltf-model="/models/worn_baseball_ball.glb"
           reflections="type: static"
         >
         </a-entity>
