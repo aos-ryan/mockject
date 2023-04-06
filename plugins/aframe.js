@@ -6,6 +6,7 @@ import {
   portalCameraComponent,
   tapToPlacePortalComponent,
   spinComponent,
+  promptFlowComponent,
 } from '~/assets/js/portal.js'
 import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
 import { startPractice } from '~/assets/js/startPractice'
@@ -15,6 +16,7 @@ AFRAME.registerComponent('update-score', updateScore)
 AFRAME.registerComponent('start-practice', startPractice)
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
+AFRAME.registerComponent('prompt-flow', promptFlowComponent)
 AFRAME.registerComponent('spin', spinComponent)
 AFRAME.registerComponent('tap-to-place-portal', tapToPlacePortalComponent)
 AFRAME.registerComponent('auto-play-video', {

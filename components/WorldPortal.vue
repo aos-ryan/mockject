@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div id="ar-div">
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
-      <div id="score-title">Score: <span id="score">0</span></div>
       <img id="recenterButton" src="/textures/recenter.png" />
+      <span id="promptText"></span>
     </div>
 
     <!-- Scene -->
@@ -13,7 +13,7 @@
       xrweb="allowedDevices: any; disableDefaultEnvironment: true"
       renderer="colorManagement: true;"
       tap-to-place-portal
-      update-score
+      prompt-flow
     >
       <!-- Assets -->
       <a-assets>
@@ -96,15 +96,15 @@
       <!-- Lights -->
       <a-entity
         light="
-      type: directional;
-      castShadow: true;
-      shadowMapHeight:2048;
-      shadowMapWidth:2048;
-      shadowCameraTop: 35;
-      shadowCameraBottom: -20;
-      shadowCameraRight: 40;
-      shadowCameraLeft: -10;
-      target: #portalRim"
+          type: directional;
+          castShadow: true;
+          shadowMapHeight:2048;
+          shadowMapWidth:2048;
+          shadowCameraTop: 35;
+          shadowCameraBottom: -20;
+          shadowCameraRight: 40;
+          shadowCameraLeft: -10;
+          target: #portalRim"
         xrextras-attach="target: portalRim; offset: 18 7 14"
         shadow
       >
@@ -112,37 +112,29 @@
 
       <a-light type="ambient" intensity="0.3"></a-light>
 
-      <!-- Entities -->
+      <!-- Portal Contents -->
       <a-entity id="portal-contents">
         <a-entity
-          id="info-panel"
-          gltf-model="/models/information_panel.glb"
-          position="0 4.5 -6"
-          scale="3 3 3"
-          class="collidible"
-          start-practice
-        >
-          <a-entity
-            text="value: Start Practice; align: center; font: dejavu"
-            position="0 1.1 0.3"
-            animation="property: components.text.material.uniforms.opacity.value; to: 0; dir: alternate; loop: true"
-          ></a-entity>
-        </a-entity>
-
-        <a-entity
-          id="collectible"
-          create-collectible="position: 2 9 -15; value: 1"
+          id="floor"
+          gltf-model="/models/moon_floor.glb"
+          scale="0.1 0.1 0.1"
+          position="-20 -10 0"
         >
         </a-entity>
 
-        <a-entity
-          id="collectible"
-          create-collectible="position: -2 9 -11; value: 3"
-          scale="2 2 2"
-        >
-        </a-entity>
         <!-- Skybox -->
-        <a-sky src="#skybox-img" rotation="0 7 0"></a-sky>
+        <a-entity
+          gltf-model="/models/sky_model.glb"
+          scale="100 100 100"
+        ></a-entity>
+
+        <!-- Planet -->
+        <a-entity
+          gltf-model="/models/planet_earth.glb"
+          position="-10 15 -75"
+          scale="10 10 10"
+          spin="speed: 16000"
+        ></a-entity>
       </a-entity>
 
       <!-- Portal -->
@@ -175,7 +167,7 @@ export default {}
 </script>
 
 <style scoped>
-div {
+#ar-div {
   position: fixed;
   top: 0;
   left: 0;
@@ -189,19 +181,6 @@ div {
   left: 0;
   bottom: 0;
   right: 0;
-  pointer-events: none;
-}
-#score-title {
-  display: none;
-  position: absolute;
-  z-index: 11;
-  top: 0;
-  bottom: 2vh;
-  width: 100%;
-  text-align: center;
-  color: white;
-  font-size: 4rem;
-  pointer-events: none;
 }
 
 #recenterButton {
@@ -210,8 +189,53 @@ div {
   left: 2vh;
   bottom: 2vh;
   max-width: 50px;
-  pointer-events: auto;
 }
+
+#promptText {
+  font-size: 8vw;
+  text-align: center;
+  color: white;
+
+  position: absolute;
+  width: 100%;
+  bottom: 12vh;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.fly-in {
+  animation: fly-in 1.5s ease-out both;
+}
+@keyframes fly-in {
+  0% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+}
+.fly-out {
+  animation: fly-out 1.5s ease-out both;
+}
+@keyframes fly-out {
+  0% {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0%, 0%);
+    opacity: 0;
+  }
+}
+
 .pulse-once {
   animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
 }

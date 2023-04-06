@@ -87,7 +87,7 @@ const promptFlowComponent = {
     this.overlay = document.getElementById('overlay')
     this.el.sceneEl.addEventListener('realityready', () => {
       this.overlay.style.display = 'block'
-      this.prompt.innerHTML = 'Tap to Place<br>Moon Portal'
+      this.prompt.innerHTML = 'Tap to Place<br>Portal'
       this.prompt.classList.add('fly-in')
     })
     this.el.addEventListener('dismissPrompt', () => {
