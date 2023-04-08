@@ -10,6 +10,7 @@ import {
 } from '~/assets/js/portal.js'
 import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
 import { startPractice } from '~/assets/js/startPractice'
+import { loadingComponent } from '~/assets/js/loading'
 
 AFRAME.registerComponent('create-collectible', createCollectible)
 AFRAME.registerComponent('update-score', updateScore)
@@ -30,3 +31,4 @@ AFRAME.registerComponent('auto-play-video', {
 })
 
 AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
+AFRAME.registerComponent('loading', loadingComponent)

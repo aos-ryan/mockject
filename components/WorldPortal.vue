@@ -1,16 +1,43 @@
 <template>
   <div id="ar-div">
+    <!-- Loading Modal -->
+    <div id="loading-modal">
+      <div id="loading-modal-content">
+        <video
+          id="intro-video"
+          muted
+          autoplay
+          playsinline
+          crossorigin="anonymous"
+          loop="true"
+          src="/textures/loading.mp4"
+        ></video>
+        <div id="start" class="button">Begin Experience</div>
+      </div>
+    </div>
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
-      <img id="recenterButton" src="/textures/recenter.png" />
+      <div id="ui">
+        <div id="reset-btn">
+          <img class="ui-img" src="/textures/reset.png" />
+        </div>
+        <div id="recenter-btn">
+          <img class="ui-img" src="/textures/recenter.png" />
+        </div>
+        <div id="info-btn">
+          <img class="ui-img" src="/textures/info.png" />
+        </div>
+        <div id="sound-btn">
+          <img class="ui-img" src="/textures/audio.png" />
+        </div>
+      </div>
       <span id="promptText"></span>
     </div>
 
     <!-- Scene -->
     <a-scene
-      xrextras-loading
+      loading
       xrextras-runtime-error
-      xrweb="allowedDevices: any; disableDefaultEnvironment: true"
       renderer="colorManagement: true;"
       tap-to-place-portal
       prompt-flow
@@ -167,12 +194,32 @@ export default {}
 </script>
 
 <style scoped>
+.hidden {
+  display: none !important;
+}
+
 #ar-div {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+}
+#loading-modal {
+  z-index: 998;
+  height: 100vh;
+  background-color: #000000;
+  position: relative;
+}
+#loading-modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#intro-video {
+  width: 100vw;
 }
 .absolute-fill {
   z-index: 10;
@@ -181,14 +228,24 @@ export default {}
   left: 0;
   bottom: 0;
   right: 0;
+  pointer-events: none;
 }
 
-#recenterButton {
+#ui {
   position: absolute;
   z-index: 5;
-  left: 2vh;
-  bottom: 2vh;
-  max-width: 50px;
+  left: 7vh;
+  bottom: 5vh;
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  pointer-events: auto;
+}
+
+.ui-img {
+  width: 30px;
+  height: 30px;
 }
 
 #promptText {
@@ -201,6 +258,15 @@ export default {}
   bottom: 12vh;
   left: 50%;
   transform: translate(-50%, 0);
+}
+.button {
+  height: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 14px;
+  color: #e6e6e6;
+  user-select: none;
 }
 
 .fly-in {

@@ -43,6 +43,7 @@ const tapToPlacePortalComponent = {
     const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
 
     const handleClickEvent = (e) => {
+      console.log('recenter clicked')
       if (!e.touches || e.touches.length < 2) {
         recenterBtn.classList.add('pulse-once')
         sceneEl.emit('recenter')
