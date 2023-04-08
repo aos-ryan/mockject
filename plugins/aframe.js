@@ -1,7 +1,3 @@
-import { OimoWorld, OimoBody } from '~/assets/js/physics-component.js'
-// import CubeMapSceneComponent from '~/assets/js/cubemap-realtime.js'
-import { createCollectible } from '~/assets/js/collectible.js'
-import { updateScore } from '~/assets/js/updateScore.js'
 import {
   portalCameraComponent,
   tapToPlacePortalComponent,
@@ -9,12 +5,10 @@ import {
   promptFlowComponent,
 } from '~/assets/js/portal.js'
 import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
-import { startPractice } from '~/assets/js/startPractice'
+
 import { loadingComponent } from '~/assets/js/loading'
 
-AFRAME.registerComponent('create-collectible', createCollectible)
-AFRAME.registerComponent('update-score', updateScore)
-AFRAME.registerComponent('start-practice', startPractice)
+import { uiControls } from '~/assets/js/uiControls'
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('prompt-flow', promptFlowComponent)
@@ -32,3 +26,4 @@ AFRAME.registerComponent('auto-play-video', {
 
 AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
 AFRAME.registerComponent('loading', loadingComponent)
+AFRAME.registerComponent('ui-controls', uiControls)

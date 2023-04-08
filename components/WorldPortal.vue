@@ -37,6 +37,7 @@
     <!-- Scene -->
     <a-scene
       loading
+      ui-controls
       xrextras-runtime-error
       renderer="colorManagement: true;"
       tap-to-place-portal
@@ -232,12 +233,12 @@ export default {}
 }
 
 #ui {
+  display: none;
   position: absolute;
   z-index: 5;
   left: 7vh;
   bottom: 5vh;
   width: 70%;
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   pointer-events: auto;
