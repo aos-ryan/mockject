@@ -12,7 +12,9 @@
           loop="true"
           src="/textures/loading.mp4"
         ></video>
-        <div id="start" class="button">Begin Experience</div>
+        <div id="start" class="button">
+          Now loading an Array of Stars Experience
+        </div>
       </div>
     </div>
     <!-- UI -->
@@ -217,6 +219,9 @@ export default {}
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+#start {
+  pointer-events: none;
 }
 
 #intro-video {
