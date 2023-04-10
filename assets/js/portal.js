@@ -42,16 +42,6 @@ const tapToPlacePortalComponent = {
     const portalRim = this.el.sceneEl.querySelector('#portalRim')
     const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
 
-    const handleClickEvent = (e) => {
-      console.log('recenter clicked')
-      if (!e.touches || e.touches.length < 2) {
-        recenterBtn.classList.add('pulse-once')
-        sceneEl.emit('recenter')
-        setTimeout(() => {
-          recenterBtn.classList.remove('pulse-once')
-        }, 200)
-      }
-    }
     const firstPlaceEvent = (e) => {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
@@ -77,7 +67,6 @@ const tapToPlacePortalComponent = {
         easing: 'easeOutElastic',
       })
       sceneEl.removeEventListener('click', firstPlaceEvent)
-      recenterBtn.addEventListener('click', handleClickEvent, true)
     }
     sceneEl.addEventListener('click', firstPlaceEvent)
   },

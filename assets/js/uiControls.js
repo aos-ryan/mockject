@@ -5,6 +5,8 @@ const uiControls = {
     const recenterBtn = document.getElementById('recenter-btn')
     const soundBtn = document.getElementById('sound-btn')
     const infoBtn = document.getElementById('info-btn')
+    const modal = document.getElementById('info-modal')
+    const closeBtn = document.getElementById('close-modal')
 
     this.el.sceneEl.addEventListener('realityready', () => {
       // When reality is ready (scene loaded) display the UI controls
@@ -16,7 +18,7 @@ const uiControls = {
     recenterBtn.addEventListener('click', (e) => {
       XR8.XrController.recenter()
     })
-    // Emit the toggle audio event which is listend for in the loading page component
+    // handle clicking audio button
     soundBtn.addEventListener('click', (e) => {
       console.log('audio toggled')
     })
@@ -26,7 +28,12 @@ const uiControls = {
       location.reload()
     })
     infoBtn.addEventListener('click', (e) => {
-      console.log('toggled info modal')
+      modal.style.display = 'block'
+    })
+
+    // Add event listener to close the modal
+    closeBtn.addEventListener('click', (e) => {
+      modal.style.display = 'none'
     })
   },
 }

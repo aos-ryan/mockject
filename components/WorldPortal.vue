@@ -16,6 +16,10 @@
           Now loading an Array of Stars Experience
         </div>
       </div>
+      <div id="disclaimer">
+        This prototype demonstrates augmented reality functionality and
+        potential.<br />It is not related to client work.
+      </div>
     </div>
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
@@ -34,6 +38,16 @@
         </div>
       </div>
       <span id="promptText"></span>
+      <!-- Info modal -->
+      <div id="info-modal">
+        <div id="close-modal" class="close">&times;</div>
+        <div class="modal-body">
+          <img class="aos-logo" src="/textures/aos-logo.png" />
+          Array of Stars creates enhanced experiences built for attention across
+          virtual, digital, and physical realities.
+          <a href="https://www.arrayofstars.com" class="cta"> Learn More </a>
+        </div>
+      </div>
     </div>
 
     <!-- Scene -->
@@ -210,7 +224,7 @@ export default {}
 }
 #loading-modal {
   z-index: 998;
-  height: 100vh;
+  height: 100%;
   background-color: #000000;
   position: relative;
 }
@@ -219,9 +233,22 @@ export default {}
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  top: 15%;
 }
 #start {
+  font-family: 'Plain';
   pointer-events: none;
+}
+#disclaimer {
+  font-family: 'Plain';
+  user-select: none;
+  color: white;
+  font-size: 10px;
+  padding: 5%;
+  text-align: center;
+  position: absolute;
+  bottom: 5%;
 }
 
 #intro-video {
@@ -254,8 +281,15 @@ export default {}
   height: 30px;
 }
 
+.aos-logo {
+  width: 36px;
+  height: 31px;
+  margin-bottom: 5%;
+}
+
 #promptText {
-  font-size: 8vw;
+  font-family: 'Plain';
+  font-size: 14px;
   text-align: center;
   color: white;
 
@@ -273,6 +307,57 @@ export default {}
   font-size: 14px;
   color: #e6e6e6;
   user-select: none;
+}
+
+/* Modal styles */
+
+#info-modal {
+  display: none;
+  z-index: 999;
+  background-color: #000000;
+  position: relative;
+  margin: 40% auto;
+  width: 80%;
+  padding-left: 5%;
+  padding-right: 5%;
+  border-radius: 5px;
+  pointer-events: auto;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15%;
+  user-select: none;
+
+  font-family: 'Plain';
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+}
+.cta {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: 'Monument Extended';
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 20px;
+
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  font-size: 34px;
+  color: #ffffff;
 }
 
 .fly-in {

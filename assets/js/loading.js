@@ -6,9 +6,11 @@ const loadingComponent = {
   init() {
     const loadingModal = document.getElementById('loading-modal')
     const start = document.getElementById('start')
+
     setTimeout(() => {
       start.innerHTML = 'Tap to begin'
       start.style.pointerEvents = 'auto'
+      start.style.fontFamily = 'Monument Extended'
     }, 5000)
 
     const addXRWeb = () => {
