@@ -10,6 +10,10 @@ const imageTargetPortalComponent = () => ({
     const portal = this.el.sceneEl.querySelector('#portal')
     // selects the ball
     const ball = this.el.sceneEl.querySelector('#ball')
+    // selects the sound effects
+    const organFx = document.querySelector('#organFx')
+    const batFx = document.querySelector('#batFx')
+
     const showImage = ({ detail }) => {
       if (name !== detail.name) {
         return
@@ -21,6 +25,8 @@ const imageTargetPortalComponent = () => ({
     }
     const imageFound = (e) => {
       showImage(e)
+      // play organ fx
+      organFx.components.sound.playSound()
       // portal animation
       setTimeout(() => {
         portal.setAttribute('animation__scaleIn', {
@@ -40,6 +46,8 @@ const imageTargetPortalComponent = () => ({
           to: '0 0 0.5',
           easing: 'easeOutQuad',
         })
+        // play bat crack fx
+        batFx.components.sound.playSound()
       }, 1000)
     }
     const imageLost = (e) => {
