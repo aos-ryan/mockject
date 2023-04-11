@@ -75,14 +75,7 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-camera
-        id="camera"
-        cursor="fuse: false; rayOrigin: mouse;"
-        raycaster="objects: .collidible"
-        position="0 9 9"
-        portal-camera
-      >
-      </a-camera>
+      <a-camera id="camera" position="0 9 9" portal-camera> </a-camera>
       <!-- Hider walls -->
       <xrextras-opaque-background remove="true">
         <a-entity id="hider-walls">
