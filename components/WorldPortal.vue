@@ -24,16 +24,16 @@
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
       <div id="ui">
-        <div id="reset-btn">
+        <div id="reset-btn" class="bdr-ripple">
           <img class="ui-img" src="/textures/reset.png" />
         </div>
-        <div id="recenter-btn">
+        <div id="recenter-btn" class="bdr-ripple">
           <img class="ui-img" src="/textures/recenter.png" />
         </div>
-        <div id="info-btn">
+        <div id="info-btn" class="bdr-ripple">
           <img class="ui-img" src="/textures/info.png" />
         </div>
-        <div id="sound-btn">
+        <div id="sound-btn" class="bdr-ripple">
           <img class="ui-img" src="/textures/audio.png" />
         </div>
       </div>
@@ -72,6 +72,16 @@
           src="/textures/portal-video.mp4"
         ></video>
         <img id="skybox-img" src="/textures/skybox.jpg" />
+        <audio
+          id="intro"
+          src="/sounds/positive-correct.wav"
+          preload="auto"
+        ></audio>
+        <audio
+          id="select-sound"
+          src="/sounds/positive-bling.wav"
+          preload="auto"
+        ></audio>
       </a-assets>
 
       <!-- Camera -->
@@ -168,7 +178,7 @@
         <!-- Planet -->
         <a-entity
           gltf-model="/models/planet_earth.glb"
-          position="-10 15 -75"
+          position="-10 35 -75"
           scale="10 10 10"
           spin="speed: 16000"
         ></a-entity>
@@ -207,7 +217,6 @@ export default {}
 .hidden {
   display: none !important;
 }
-
 #ar-div {
   position: fixed;
   top: 0;
@@ -227,7 +236,7 @@ export default {}
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 15%;
+  top: 25%;
 }
 #start {
   font-family: 'Plain';
@@ -238,12 +247,11 @@ export default {}
   user-select: none;
   color: white;
   font-size: 10px;
-  padding: 5%;
+  padding: 5% 20%;
   text-align: center;
   position: absolute;
   bottom: 5%;
 }
-
 #intro-video {
   width: 100vw;
 }
@@ -256,7 +264,6 @@ export default {}
   right: 0;
   pointer-events: none;
 }
-
 #ui {
   display: none;
   position: absolute;
@@ -316,6 +323,7 @@ export default {}
   border-radius: 5px;
   pointer-events: auto;
 }
+
 .modal-body {
   display: flex;
   flex-direction: column;
@@ -344,7 +352,6 @@ export default {}
   margin-top: 10%;
   margin-bottom: 10%;
 }
-
 .close {
   position: absolute;
   top: 8px;
@@ -352,7 +359,23 @@ export default {}
   font-size: 34px;
   color: #ffffff;
 }
+/* Button Ripple */
+.bdr-ripple {
+  display: block;
+  background: #ffffff00;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  border-radius: 100%;
+  box-sizing: border-box;
+  color: #666;
+  overflow: hidden;
+}
+.bdr-ripple.active {
+  background: #fff;
+}
 
+/* Animations */
 .fly-in {
   animation: fly-in 1.5s ease-out both;
 }
@@ -385,19 +408,19 @@ export default {}
     opacity: 0;
   }
 }
-
-.pulse-once {
-  animation: pulse-once 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86) both;
+.ripple {
+  animation: at-ripple 0.6s linear 1;
 }
-@keyframes pulse-once {
+@keyframes at-ripple {
   0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(0.8);
+    box-shadow: 0 4px 10px rgba(234, 234, 234, 0.1),
+      0 0 0 0 rgba(234, 234, 234, 0.1), 0 0 0 5px rgba(234, 234, 234, 0.1),
+      0 0 0 10px rgba(234, 234, 234, 0.1);
   }
   100% {
-    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(234, 234, 234, 0.1),
+      0 0 0 5px rgba(234, 234, 234, 0.1), 0 0 0 10px rgba(234, 234, 234, 0.1),
+      0 0 0 20px rgba(234, 234, 234, 0);
   }
 }
 </style>
