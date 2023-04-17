@@ -65,6 +65,12 @@
         ></audio>
         <audio id="bat" src="/sounds/BaseballBat.wav" preload="auto"></audio>
         <audio
+          id="crowd"
+          src="/sounds/baseball-crowd.wav"
+          preload="auto"
+          loop="true"
+        ></audio>
+        <audio
           id="intro"
           src="/sounds/positive-correct.wav"
           preload="auto"
@@ -84,6 +90,7 @@
       <a-entity image-target-portal="name: skybox-target" visible="false">
         <a-entity id="organFx" sound="src: #organ"></a-entity>
         <a-entity id="batFx" sound="src: #bat"></a-entity>
+        <a-entity id="crowdFx" sound="src: #crowd"></a-entity>
 
         <a-ring
           id="portal"
@@ -203,6 +210,15 @@ export default {}
   font-size: 14px;
   color: #e6e6e6;
   user-select: none;
+}
+.button.shimmer {
+  color: grey;
+  display: inline-block;
+  -webkit-mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/300%
+    100%;
+  mask: linear-gradient(-60deg, #000 30%, #0005, #000 70%) right/300% 100%;
+  background-repeat: no-repeat;
+  animation: shimmer 2.5s infinite;
 }
 
 /* Modal styles */
@@ -336,6 +352,12 @@ export default {}
     box-shadow: 0 4px 10px rgba(234, 234, 234, 0.1),
       0 0 0 5px rgba(234, 234, 234, 0.1), 0 0 0 10px rgba(234, 234, 234, 0.1),
       0 0 0 20px rgba(234, 234, 234, 0);
+  }
+}
+@keyframes shimmer {
+  100% {
+    mask-position: left;
+    -webkit-mask-position: left;
   }
 }
 </style>

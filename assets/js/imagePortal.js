@@ -13,6 +13,7 @@ const imageTargetPortalComponent = () => ({
     // selects the sound effects
     const organFx = document.querySelector('#organFx')
     const batFx = document.querySelector('#batFx')
+    const crowdFx = document.querySelector('#crowdFx')
 
     const showImage = ({ detail }) => {
       if (name !== detail.name) {
@@ -56,6 +57,10 @@ const imageTargetPortalComponent = () => ({
         // play bat crack fx
         batFx.components.sound.playSound()
       }, 2500)
+      // crowd fx after other fx
+      setTimeout(() => {
+        crowdFx.components.sound.playSound()
+      }, 3500)
     }
     const imageLost = (e) => {
       object3D.visible = false

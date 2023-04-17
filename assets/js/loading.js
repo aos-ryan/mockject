@@ -15,6 +15,7 @@ const loadingComponent = {
     }, 5000)
 
     const addXRWeb = () => {
+      start.classList.add('shimmer')
       startAudio.play()
       setTimeout(() => {
         if (
