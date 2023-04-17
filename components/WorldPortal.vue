@@ -71,7 +71,7 @@
           loop="true"
           src="/textures/portal-video.mp4"
         ></video>
-        <img id="skybox-img" src="/textures/skybox.jpg" />
+        <img id="floor-img" src="/textures/lunar-surface.png" />
         <audio
           id="intro"
           src="/sounds/positive-correct.wav"
@@ -161,19 +161,11 @@
 
       <!-- Portal Contents -->
       <a-entity id="portal-contents">
-        <a-entity
-          id="floor"
-          gltf-model="/models/moon_floor.glb"
-          scale="0.1 0.1 0.1"
-          position="-20 -10 0"
-        >
-        </a-entity>
+        <a-sphere src="#floor-img" scale="30 30 30" position="0 -30 -8">
+        </a-sphere>
 
         <!-- Skybox -->
-        <a-entity
-          gltf-model="/models/sky_model.glb"
-          scale="100 100 100"
-        ></a-entity>
+        <a-sky color="#000000"></a-sky>
 
         <!-- Planet -->
         <a-entity
@@ -281,12 +273,6 @@ export default {}
   height: 30px;
 }
 
-.aos-logo {
-  width: 36px;
-  height: 31px;
-  margin-bottom: 5%;
-}
-
 #promptText {
   font-family: 'Plain';
   font-size: 14px;
@@ -310,6 +296,13 @@ export default {}
 }
 
 /* Modal styles */
+.aos-logo {
+  width: 36px;
+  height: 31px;
+  margin-bottom: 5%;
+  opacity: 0;
+  animation: fade-in 250ms linear 250ms 1 forwards;
+}
 
 #info-modal {
   display: none;
@@ -318,10 +311,12 @@ export default {}
   position: relative;
   margin: 40% auto;
   width: 80%;
+  opacity: 0;
   padding-left: 5%;
   padding-right: 5%;
   border-radius: 5px;
   pointer-events: auto;
+  animation: fade-in 250ms linear 1 forwards;
 }
 
 .modal-body {
@@ -331,13 +326,14 @@ export default {}
   align-items: center;
   padding-top: 15%;
   user-select: none;
-
+  opacity: 0;
   font-family: 'Plain';
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
   text-align: center;
   color: #ffffff;
+  animation: fade-in 250ms linear 500ms 1 forwards;
 }
 .cta {
   background-color: #ffffff;
@@ -348,9 +344,10 @@ export default {}
   padding: 10px 20px;
   text-decoration: none;
   border-radius: 20px;
-
+  opacity: 0;
   margin-top: 10%;
   margin-bottom: 10%;
+  animation: fade-in 250ms linear 1000ms 1 forwards;
 }
 .close {
   position: absolute;
@@ -376,6 +373,14 @@ export default {}
 }
 
 /* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .fly-in {
   animation: fly-in 1.5s ease-out both;
 }
