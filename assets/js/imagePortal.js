@@ -41,14 +41,21 @@ const imageTargetPortalComponent = () => ({
       setTimeout(() => {
         ball.setAttribute('animation__moveOut', {
           property: 'position',
-          dur: 3000,
+          dur: 1000,
           from: '0 0 -10',
           to: '0 0 0.5',
           easing: 'easeOutQuad',
         })
+        ball.setAttribute('animation__scaleUp', {
+          property: 'scale',
+          dur: 1000,
+          from: '0.3 0.3 0.3',
+          to: '1 1 1',
+          easing: 'easeOutQuad',
+        })
         // play bat crack fx
         batFx.components.sound.playSound()
-      }, 1000)
+      }, 2500)
     }
     const imageLost = (e) => {
       object3D.visible = false
