@@ -72,6 +72,7 @@
           src="/textures/portal-video.mp4"
         ></video>
         <img id="floor-img" src="/textures/lunar-surface.png" />
+        <img id="blob" src="/textures/blob.png" />
         <audio
           id="intro"
           src="/sounds/positive-correct.wav"
@@ -161,7 +162,12 @@
 
       <!-- Portal Contents -->
       <a-entity id="portal-contents">
-        <a-sphere src="#floor-img" scale="30 30 30" position="0 -30 -8">
+        <a-sphere
+          src="#floor-img"
+          scale="30 30 30"
+          position="0 -30 -8"
+          rotation="90 0 0"
+        >
         </a-sphere>
 
         <!-- Skybox -->
@@ -174,6 +180,7 @@
           scale="10 10 10"
           spin="speed: 16000"
         ></a-entity>
+        <!-- Particles -->
       </a-entity>
 
       <!-- Portal -->
