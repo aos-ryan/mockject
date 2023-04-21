@@ -102,7 +102,6 @@
         <a-entity
           id="ball"
           gltf-model="/models/worn_baseball_ball.glb"
-          class="cantap"
           rotate
           position="0 0 -10"
           scale="0.3 0.3 0.3"

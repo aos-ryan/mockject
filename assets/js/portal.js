@@ -36,6 +36,7 @@ const tapToPlacePortalComponent = {
     this.contents = document.getElementById('portal-contents')
     this.walls = document.getElementById('hider-walls')
     this.portalWall = document.getElementById('portal-wall')
+
     this.isInPortalSpace = false
     this.wasOutside = true
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
@@ -45,6 +46,7 @@ const tapToPlacePortalComponent = {
     const firstPlaceEvent = (e) => {
       sceneEl.emit('recenter')
       sceneEl.emit('dismissPrompt')
+
       portalHiderRing.setAttribute('animation__1', {
         property: 'radius-inner',
         dur: 1500,

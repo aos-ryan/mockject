@@ -1,5 +1,5 @@
 <template>
-  <div id="ar-div">
+  <div id="ar-div" class="cantap">
     <!-- Loading Modal -->
     <div id="loading-modal">
       <div id="loading-modal-content">
@@ -173,14 +173,13 @@
         <!-- Skybox -->
         <a-sky color="#000000"></a-sky>
 
-        <!-- Planet -->
+        <!-- Tetra -->
         <a-entity
-          gltf-model="/models/planet_earth.glb"
-          position="-10 35 -75"
-          scale="10 10 10"
-          spin="speed: 16000"
-        ></a-entity>
-        <!-- Particles -->
+          geometry="primitive: tetra"
+          position="0 9 -5"
+          spin="speed:16000"
+        >
+        </a-entity>
       </a-entity>
 
       <!-- Portal -->
