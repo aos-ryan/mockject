@@ -52,6 +52,7 @@
 
     <!-- Scene -->
     <a-scene
+      light="defaultLightsEnabled: false"
       loading
       ui-controls
       xrextras-runtime-error
@@ -86,7 +87,11 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-camera id="camera" position="0 9 9" portal-camera> </a-camera>
+      <a-camera id="camera" position="0 9 9" portal-camera>
+        <a-entity
+          light="type: point; intensity: 0.75; distance: 50; decay: 4"
+        ></a-entity>
+      </a-camera>
       <!-- Hider walls -->
       <xrextras-opaque-background remove="true">
         <a-entity id="hider-walls">
@@ -142,7 +147,7 @@
         </a-entity>
       </xrextras-opaque-background>
       <!-- Lights -->
-      <a-entity
+      <!-- <a-entity
         light="
           type: directional;
           castShadow: true;
@@ -156,19 +161,21 @@
         xrextras-attach="target: portalRim; offset: 18 7 14"
         shadow
       >
-      </a-entity>
+      </a-entity> -->
 
-      <a-light type="ambient" intensity="0.3"></a-light>
+      <!-- <a-light type="ambient" intensity="0.3"></a-light> -->
 
       <!-- Portal Contents -->
       <a-entity id="portal-contents">
-        <a-sphere
-          src="#floor-img"
-          scale="30 30 30"
-          position="0 -30 -8"
-          rotation="90 0 0"
+        <a-plane
+          id="floor"
+          material="color: #4C4C4C; roughness: 0.5; metalness: 1 "
+          scale="50 50 50"
+          position="0 -1 -8"
+          rotation="-90 0 0"
+          shadow="receive: true"
         >
-        </a-sphere>
+        </a-plane>
 
         <!-- Skybox -->
         <a-sky color="#000000"></a-sky>
@@ -176,8 +183,15 @@
         <!-- Tetra -->
         <a-entity
           geometry="primitive: tetra"
-          position="0 9 -5"
+          material="shader:phong;"
+          position="0 6 -7"
           spin="speed:16000"
+          shadow="receive: false"
+        >
+        </a-entity>
+        <a-entity
+          light="type: spot; target: #floor; penumbra: 1; castShadow: true"
+          position="0 11 -7"
         >
         </a-entity>
       </a-entity>

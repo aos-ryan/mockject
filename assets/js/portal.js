@@ -93,6 +93,7 @@ const spinComponent = {
     speed: { default: 2000 },
     direction: { default: 'normal' },
     axis: { default: 'y' },
+    dual: { default: false },
   },
   init() {
     const { el } = this
@@ -105,6 +106,17 @@ const spinComponent = {
       loop: true,
       easing: 'linear',
     })
+    if (this.data.dual) {
+      el.setAttribute('animation__spinx', {
+        property: `object3D.rotation.x`,
+        from: 0,
+        to: 360,
+        dur: this.data.speed,
+        dir: this.data.direction,
+        loop: true,
+        easing: 'linear',
+      })
+    }
   },
 }
 export {
