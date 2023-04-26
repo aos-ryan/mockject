@@ -181,14 +181,15 @@
         <a-sky color="#000000"></a-sky>
 
         <!-- Tetra -->
-        <a-entity
-          geometry="primitive: tetra"
-          material="shader:phong;"
+        <a-cone
+          material="shader: grid-glitch"
+          segments-radial="4"
+          height="2.5"
+          radius-bottom="2"
           position="0 6 -7"
-          spin="speed:16000"
           shadow="receive: false"
         >
-        </a-entity>
+        </a-cone>
         <a-entity
           light="type: spot; target: #floor; penumbra: 1; castShadow: true"
           position="0 11 -7"

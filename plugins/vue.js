@@ -13,6 +13,7 @@ Vue.config.ignoredElements = [
   'a-ring',
   'a-circle',
   'a-sphere',
+  'a-cone',
   'a-cursor',
   'a-gltf-model',
   'xrextras-capture-config',
