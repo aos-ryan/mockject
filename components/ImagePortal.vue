@@ -52,32 +52,14 @@
     <a-scene
       loading
       ui-controls
-      xrextras-gesture-detector
       xrextras-runtime-error
       renderer="colorManagement: true"
     >
       <a-assets>
-        <img id="skybox-img" src="/textures/skybox.jpg" />
-        <audio
-          id="organ"
-          src="/sounds/PipeOrganCharge.wav"
-          preload="auto"
-        ></audio>
-        <audio id="bat" src="/sounds/BaseballBat.wav" preload="auto"></audio>
-        <audio
-          id="crowd"
-          src="/sounds/baseball-crowd.wav"
-          preload="auto"
-          loop="true"
-        ></audio>
+        <img id="sky" src="/textures/sky.png" />
         <audio
           id="intro"
           src="/sounds/positive-correct.wav"
-          preload="auto"
-        ></audio>
-        <audio
-          id="select-sound"
-          src="/sounds/positive-bling.wav"
           preload="auto"
         ></audio>
       </a-assets>
@@ -88,33 +70,26 @@
       ></a-camera>
 
       <a-entity image-target-portal="name: skybox-target" visible="false">
-        <a-entity id="organFx" sound="src: #organ"></a-entity>
-        <a-entity id="batFx" sound="src: #bat"></a-entity>
-        <a-entity id="crowdFx" sound="src: #crowd"></a-entity>
-
         <a-ring
           id="portal"
           radius-inner="0.001"
           radius-outer="1000"
           xrextras-hider-material
         ></a-ring>
-        <a-entity id="ball-container">
-          <a-entity
-            id="ball"
-            gltf-model="/models/worn_baseball_ball.glb"
-            rotate
-            position="0 0 -10"
-            scale="0.3 0.3 0.3"
-            reflections="type: static"
-          >
-          </a-entity>
-        </a-entity>
 
-        <a-sky
-          rotation="0 90 0"
-          scale="0.015 0.015 -0.015"
-          src="#skybox-img"
-        ></a-sky>
+        <a-cone
+          material="shader: pulse; color: white; timeMsec: 10000;"
+          segments-radial="4"
+          height="2.5"
+          radius-bottom="2"
+          id="ball"
+          rotate
+          position="0 0 -10"
+          reflections="type: static"
+        >
+        </a-cone>
+
+        <a-sky rotation="0 90 0" scale="0.015 0.015 -0.015" src="#sky"></a-sky>
       </a-entity>
     </a-scene>
   </div>

@@ -10,7 +10,6 @@ import { loadingComponent } from '~/assets/js/loading'
 
 import { uiControls } from '~/assets/js/uiControls'
 import { rotateComponent } from '~/assets/js/rotate'
-import { tetraComponent } from '~/assets/js/tetra'
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('prompt-flow', promptFlowComponent)
@@ -33,7 +32,6 @@ AFRAME.registerComponent('ui-controls', uiControls)
 AFRAME.registerComponent('rotate', rotateComponent)
 
 // Custom shader for tetra
-AFRAME.registerComponent('tetra', tetraComponent)
 AFRAME.registerShader('pulse', {
   schema: {
     color: { type: 'color', is: 'uniform' },
