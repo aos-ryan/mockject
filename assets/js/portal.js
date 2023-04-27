@@ -8,7 +8,6 @@ const portalCameraComponent = {
     this.contents = document.getElementById('portal-contents')
     this.walls = document.getElementById('hider-walls')
     this.portalWall = document.getElementById('portal-wall')
-    this.portalVideo = document.getElementById('portalVideo')
     this.isInPortalSpace = false
     this.wasOutside = true
   },
@@ -24,7 +23,6 @@ const portalCameraComponent = {
     this.contents.object3D.visible = this.isInPortalSpace || isOutside
     this.walls.object3D.visible = !this.isInPortalSpace && isOutside
     this.portalWall.object3D.visible = this.isInPortalSpace && !isOutside
-    this.portalVideo.object3D.visible = isOutside
     this.wasOutside = isOutside
   },
 }

@@ -72,16 +72,11 @@
           loop="true"
           src="/textures/portal-video.mp4"
         ></video>
-        <img id="floor-img" src="/textures/lunar-surface.png" />
+        <img id="sky" src="/textures/sky.png" />
         <img id="blob" src="/textures/blob.png" />
         <audio
           id="intro"
           src="/sounds/positive-correct.wav"
-          preload="auto"
-        ></audio>
-        <audio
-          id="select-sound"
-          src="/sounds/positive-bling.wav"
           preload="auto"
         ></audio>
       </a-assets>
@@ -186,7 +181,7 @@
         </a-plane>
 
         <!-- Skybox -->
-        <a-sky color="#000000"></a-sky>
+        <a-sky src="#sky"></a-sky>
 
         <!-- Tetra -->
         <a-cone
