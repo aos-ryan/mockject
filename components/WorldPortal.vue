@@ -208,7 +208,7 @@
 
         <!-- Tetra -->
         <a-cone
-          material="shader: grid-glitch"
+          material="shader: grid-glitch; color: white; timeMsec: 10000;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"

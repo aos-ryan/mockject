@@ -55,17 +55,31 @@ uniform float timeMsec; // A-Frame time in milliseconds.
 
 void main() {
   float time = timeMsec / 1000.0; // Convert from A-Frame milliseconds to typical time in seconds.
-  // Use sin(time), which curves between 0 and 1 over time,
+  // Use sin(time), which curves between -1 and 1 over time,
   // to determine the mix of two colors:
-  //    (a) Dynamic color where 'R' and 'B' channels come
-  //        from a modulus of the UV coordinates.
-  //    (b) Base color.
+  //    (a) Base color.
+  //    (b) Semi-transparent color.
   //
   // The color itself is a vec4 containing RGBA values 0-1.
+
+  // Pulsating value created by sin function
+  float pulse = 0.5 + 0.5 * sin(time * 1.0);
+
+  // Add a small positive offset to the pulsating value to ensure
+  // that the base color never becomes completely black
+  pulse = 0.1 + 0.9 * pulse;
+
+  // Modify the base color to create a pulsating effect
+  vec4 baseColor = vec4(color, 1.0);
+  baseColor.rgb *= pulse;
+
+  // Create a semi-transparent color by setting the alpha channel to 0.5
+  vec4 transparentColor = vec4(color, 0.5);
+
   gl_FragColor = mix(
-    vec4(mod(vUv , 0.05) * 20.0, 1.0, 1.0),
-    vec4(color, 1.0),
-    sin(time)
+    baseColor,
+    transparentColor,
+    pulse // Use the pulsating value to determine the mix of colors
   );
 }
 `,
