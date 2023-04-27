@@ -34,7 +34,7 @@ AFRAME.registerComponent('rotate', rotateComponent)
 
 // Custom shader for tetra
 AFRAME.registerComponent('tetra', tetraComponent)
-AFRAME.registerShader('grid-glitch', {
+AFRAME.registerShader('pulse', {
   schema: {
     color: { type: 'color', is: 'uniform' },
     timeMsec: { type: 'time', is: 'uniform' },

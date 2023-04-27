@@ -31,7 +31,6 @@ const portalCameraComponent = {
 const tapToPlacePortalComponent = {
   init() {
     const { sceneEl } = this.el
-    const recenterBtn = document.getElementById('recenterButton')
     this.camera = document.getElementById('camera')
     this.contents = document.getElementById('portal-contents')
     this.walls = document.getElementById('hider-walls')
@@ -41,7 +40,6 @@ const tapToPlacePortalComponent = {
     this.wasOutside = true
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
     const portalRim = this.el.sceneEl.querySelector('#portalRim')
-    const portalVideo = this.el.sceneEl.querySelector('#portalVideo')
 
     const firstPlaceEvent = (e) => {
       sceneEl.emit('recenter')
@@ -59,13 +57,6 @@ const tapToPlacePortalComponent = {
         dur: 500,
         from: '0.001 0.001 0.001',
         to: '2 2 2',
-        easing: 'linear',
-      })
-      portalVideo.setAttribute('animation__3', {
-        property: 'scale',
-        dur: 500,
-        from: '0.001 0.001 0.001',
-        to: '7 7 1',
         easing: 'linear',
       })
       sceneEl.removeEventListener('click', firstPlaceEvent)

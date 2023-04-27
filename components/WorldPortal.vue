@@ -172,24 +172,6 @@
           ></a-circle>
         </a-entity>
       </xrextras-opaque-background>
-      <!-- Lights -->
-      <!-- <a-entity
-        light="
-          type: directional;
-          castShadow: true;
-          shadowMapHeight:2048;
-          shadowMapWidth:2048;
-          shadowCameraTop: 35;
-          shadowCameraBottom: -20;
-          shadowCameraRight: 40;
-          shadowCameraLeft: -10;
-          target: #portalRim"
-        xrextras-attach="target: portalRim; offset: 18 7 14"
-        shadow
-      >
-      </a-entity> -->
-
-      <!-- <a-light type="ambient" intensity="0.3"></a-light> -->
 
       <!-- Portal Contents -->
       <a-entity id="portal-contents">
@@ -208,7 +190,7 @@
 
         <!-- Tetra -->
         <a-cone
-          material="shader: grid-glitch; color: white; timeMsec: 10000;"
+          material="shader: pulse; color: white; timeMsec: 10000;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
@@ -231,15 +213,6 @@
         rotation="0 0 0"
         scale="0.001 0.001 0.001"
         shadow="receive: false"
-      >
-      </a-entity>
-      <a-entity
-        id="portalVideo"
-        auto-play-video="video: #portal-video"
-        material="shader: flat; src: #portal-video; blending: additive; side: front; transparent: true"
-        geometry="primitive: plane; height: 1; width: 1;"
-        position="0 7 12"
-        scale="0.001 0.001 0.001"
       >
       </a-entity>
     </a-scene>
