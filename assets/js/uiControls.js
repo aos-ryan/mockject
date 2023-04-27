@@ -7,11 +7,14 @@ const uiControls = {
     const infoBtn = document.getElementById('info-btn')
     const modal = document.getElementById('info-modal')
     const closeBtn = document.getElementById('close-modal')
+    const humSound = document.getElementById('positional-hum')
+    let soundOn = true
 
     this.el.sceneEl.addEventListener('realityready', () => {
       // When reality is ready (scene loaded) display the UI controls
       uis.forEach((ui) => {
         ui.style.display = 'flex'
+        soundBtn.classList.add('active')
       })
     })
     // Repositions the camera to the origin / facing direction from updateCameraProjectionMatrix
@@ -24,7 +27,18 @@ const uiControls = {
     })
     // handle clicking audio button
     soundBtn.addEventListener('click', (e) => {
-      console.log('audio toggled')
+      soundBtn.classList.add('ripple')
+      soundOn = !soundOn
+      if (!soundOn) {
+        humSound.components.sound.stopSound()
+        soundBtn.classList.remove('active')
+      } else {
+        humSound.components.sound.playSound()
+        soundBtn.classList.add('active')
+      }
+    })
+    soundBtn.addEventListener('animationend', (e) => {
+      soundBtn.classList.remove('ripple')
     })
     // Reset the experience at any stage
     resetBtn.addEventListener('click', (e) => {
