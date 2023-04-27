@@ -5,11 +5,10 @@ import {
   promptFlowComponent,
 } from '~/assets/js/portal.js'
 import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
-
 import { loadingComponent } from '~/assets/js/loading'
-
 import { uiControls } from '~/assets/js/uiControls'
 import { rotateComponent } from '~/assets/js/rotate'
+import { glowingStars } from '~/assets/js/stars'
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('prompt-flow', promptFlowComponent)
@@ -28,6 +27,7 @@ AFRAME.registerComponent('auto-play-video', {
 AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
 AFRAME.registerComponent('loading', loadingComponent)
 AFRAME.registerComponent('ui-controls', uiControls)
+AFRAME.registerComponent('glowing-stars', glowingStars)
 
 AFRAME.registerComponent('rotate', rotateComponent)
 

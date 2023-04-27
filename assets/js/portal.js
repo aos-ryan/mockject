@@ -38,6 +38,7 @@ const tapToPlacePortalComponent = {
     this.wasOutside = true
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
     const portalRim = this.el.sceneEl.querySelector('#portalRim')
+    const humSound = document.getElementById('positional-hum')
 
     const firstPlaceEvent = (e) => {
       sceneEl.emit('recenter')
@@ -57,6 +58,7 @@ const tapToPlacePortalComponent = {
         to: '2 2 2',
         easing: 'linear',
       })
+      humSound.components.sound.playSound()
       sceneEl.removeEventListener('click', firstPlaceEvent)
     }
     sceneEl.addEventListener('click', firstPlaceEvent)

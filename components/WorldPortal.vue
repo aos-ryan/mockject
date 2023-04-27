@@ -1,7 +1,7 @@
 <template>
   <div id="ar-div" class="cantap">
     <!-- Loading Modal -->
-    <div id="loading-modal">
+    <!-- <div id="loading-modal">
       <div id="loading-modal-content">
         <video
           id="intro-video"
@@ -20,7 +20,7 @@
         This prototype demonstrates augmented reality functionality and
         potential.<br />It is not related to client work.
       </div>
-    </div>
+    </div> -->
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
       <div id="ui">
@@ -52,7 +52,6 @@
 
     <!-- Scene -->
     <a-scene
-      loading
       light="defaultLightsEnabled: false"
       ui-controls
       xrextras-runtime-error
@@ -63,15 +62,6 @@
       <!-- Assets -->
       <a-assets>
         <!-- Textures -->
-        <video
-          id="portal-video"
-          muted
-          autoplay
-          playsinline
-          crossorigin="anonymous"
-          loop="true"
-          src="/textures/portal-video.mp4"
-        ></video>
         <img id="sky" src="/textures/sky.png" />
         <img id="blob" src="/textures/blob.png" />
         <audio
@@ -79,6 +69,7 @@
           src="/sounds/positive-correct.wav"
           preload="auto"
         ></audio>
+        <audio id="hum" src="/sounds/scifi-hum.wav" preload="auto"></audio>
       </a-assets>
 
       <!-- Camera -->
@@ -192,12 +183,19 @@
           position="0 6 -7"
           shadow="receive: false"
         >
+          <a-entity
+            id="positional-hum"
+            sound="src: #hum; loop: true"
+          ></a-entity>
         </a-cone>
+        <!-- Spotlight -->
         <a-entity
           light="type: spot; target: #floor; penumbra: 1; castShadow: true"
           position="0 11 -7"
         >
         </a-entity>
+        <!-- Stars -->
+        <a-entity glowing-stars="count: 1000"></a-entity>
       </a-entity>
 
       <!-- Portal -->
