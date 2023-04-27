@@ -52,8 +52,8 @@
 
     <!-- Scene -->
     <a-scene
-      light="defaultLightsEnabled: false"
       loading
+      light="defaultLightsEnabled: false"
       ui-controls
       xrextras-runtime-error
       renderer="colorManagement: true;"
@@ -127,6 +127,32 @@
             position="0 7.5 -0.2"
             xrextras-hider-material
           ></a-ring>
+
+          <a-entity id="hider-spinner" position="0 7.5 -0.2">
+            <a-box
+              id="newPortalHiderOne"
+              scale="30 5 0"
+              position="0 -6.068 0"
+              xrextras-hider-material
+            >
+            </a-box>
+            <a-box
+              id="newPortalHiderTwo"
+              scale="30 5 0"
+              position="5.379 1.729 0"
+              rotation="0 0 -60"
+              xrextras-hider-material
+            >
+            </a-box>
+            <a-box
+              id="newPortalHiderThree"
+              scale="30 5 0"
+              position="-5.529 1.381 0"
+              rotation="0 0 60"
+              xrextras-hider-material
+            >
+            </a-box>
+          </a-entity>
         </a-entity>
 
         <a-entity id="portal-wall">
@@ -201,10 +227,8 @@
       <a-entity
         id="portalRim"
         gltf-model="/models/portal.glb"
-        spin="axis: x; speed: 14000"
-        reflections="type: realtime"
-        position="0 7.5 0"
-        rotation="90 -90 -90"
+        position="0 7 11.65"
+        rotation="0 0 0"
         scale="0.001 0.001 0.001"
         shadow="receive: false"
       >
@@ -214,7 +238,7 @@
         auto-play-video="video: #portal-video"
         material="shader: flat; src: #portal-video; blending: additive; side: front; transparent: true"
         geometry="primitive: plane; height: 1; width: 1;"
-        position="0 7.5 0.1"
+        position="0 7 12"
         scale="0.001 0.001 0.001"
       >
       </a-entity>

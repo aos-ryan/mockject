@@ -98,15 +98,16 @@
           radius-outer="1000"
           xrextras-hider-material
         ></a-ring>
-
-        <a-entity
-          id="ball"
-          gltf-model="/models/worn_baseball_ball.glb"
-          rotate
-          position="0 0 -10"
-          scale="0.3 0.3 0.3"
-          reflections="type: static"
-        >
+        <a-entity id="ball-container">
+          <a-entity
+            id="ball"
+            gltf-model="/models/worn_baseball_ball.glb"
+            rotate
+            position="0 0 -10"
+            scale="0.3 0.3 0.3"
+            reflections="type: static"
+          >
+          </a-entity>
         </a-entity>
 
         <a-sky
