@@ -21,7 +21,7 @@ const explosion = {
     for (let i = 0; i < instances; i++) {
       // offsets
 
-      offsets.push(Math.random() * 10, Math.random() * 10, Math.random() * 10)
+      offsets.push(Math.random() * 3, Math.random() * 3, Math.random() * 3)
 
       // colors
 

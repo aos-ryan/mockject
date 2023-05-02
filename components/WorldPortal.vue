@@ -163,8 +163,8 @@
       <a-entity id="portal-contents">
         <a-plane
           id="floor"
-          material="color: #4C4C4C; roughness: 0.5; metalness: 1 "
-          scale="50 50 50"
+          material="color: #4C4C4C; roughness: 0.5; metalness: 0.5 "
+          scale="1000 1000 1000"
           position="0 -1 -8"
           rotation="-90 0 0"
           shadow="receive: true"
@@ -197,7 +197,7 @@
         >
         </a-entity>
         <!-- Stars -->
-        <a-entity explode position="0 6 -7"></a-entity>
+        <!-- <a-entity explode position="0 6 -7"></a-entity> -->
       </a-entity>
 
       <!-- Portal -->

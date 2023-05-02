@@ -78,7 +78,7 @@
         ></a-ring>
 
         <a-cone
-          material="shader: pulse; color: white; timeMsec: 10000;"
+          material="shader: depth; color: white; timeMsec: 10000;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
