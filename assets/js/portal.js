@@ -38,6 +38,8 @@ const tapToPlacePortalComponent = {
     this.wasOutside = true
     const portalHiderRing = this.el.sceneEl.querySelector('#portalHiderRing')
     const portalRim = this.el.sceneEl.querySelector('#portalRim')
+    const outerRim = this.el.sceneEl.querySelector('#outerRim')
+    const tetra = this.el.sceneEl.querySelector('#tetra')
     const humSound = document.getElementById('positional-hum')
 
     const firstPlaceEvent = (e) => {
@@ -57,6 +59,22 @@ const tapToPlacePortalComponent = {
         from: '0.001 0.001 0.001',
         to: '2 2 2',
         easing: 'linear',
+      })
+      outerRim.setAttribute('animation__3', {
+        property: 'scale',
+        dur: 500,
+        from: '0.001 0.001 0.001',
+        to: '13 11 11',
+        easing: 'linear',
+      })
+      tetra.setAttribute('animation__move', {
+        property: 'position',
+        to: {
+          y: 8,
+        },
+        dir: 'alternate',
+        loop: true,
+        easing: 'easeInOutCubic',
       })
       humSound.components.sound.playSound()
       sceneEl.removeEventListener('click', firstPlaceEvent)

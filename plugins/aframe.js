@@ -31,7 +31,57 @@ AFRAME.registerComponent('glowing-stars', glowingStars)
 
 AFRAME.registerComponent('rotate', rotateComponent)
 
-// Custom shader for tetra
+// Shader for explosion effect
+AFRAME.registerShader('explode', {
+  vertexShader: `
+  precision highp float;
+
+  uniform float sineTime;
+
+  uniform mat4 modelViewMatrix;
+  uniform mat4 projectionMatrix;
+
+  attribute vec3 position;
+  attribute vec3 offset;
+  attribute vec4 color;
+  attribute vec4 orientationStart;
+  attribute vec4 orientationEnd;
+
+  varying vec3 vPosition;
+  varying vec4 vColor;
+
+  void main(){
+
+    vPosition = offset * max( abs( sineTime * 2.0 + 1.0 ), 0.5 ) + position;
+    vec4 orientation = normalize( mix( orientationStart, orientationEnd, sineTime ) );
+    vec3 vcV = cross( orientation.xyz, vPosition );
+    vPosition = vcV * ( 2.0 * orientation.w ) + ( cross( orientation.xyz, vcV ) * 2.0 + vPosition );
+
+    vColor = color;
+
+    gl_Position = projectionMatrix * modelViewMatrix * vec4( vPosition, 1.0 );
+
+  }
+  `,
+  fragmentShader: `
+  precision highp float;
+
+  uniform float time;
+
+  varying vec3 vPosition;
+  varying vec4 vColor;
+
+  void main() {
+
+    vec4 color = vec4( vColor );
+    color.r += sin( vPosition.x * 10.0 + time ) * 0.5;
+
+    gl_FragColor = color;
+
+  }
+  `,
+})
+// Custom shader for pulse effect
 AFRAME.registerShader('pulse', {
   schema: {
     color: { type: 'color', is: 'uniform' },
@@ -39,46 +89,123 @@ AFRAME.registerShader('pulse', {
   },
 
   vertexShader: `
-varying vec2 vUv;
+    varying vec2 vUv;
+    void main() {
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+    }
+  `,
 
-void main() {
-  vUv = uv;
-  gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-}
-`,
   fragmentShader: `
-varying vec2 vUv;
-uniform vec3 color;
-uniform float timeMsec; // A-Frame time in milliseconds.
+    varying vec2 vUv;
+    uniform vec3 color;
+    uniform float timeMsec; // A-Frame time in milliseconds.
 
-void main() {
-  float time = timeMsec / 1000.0; // Convert from A-Frame milliseconds to typical time in seconds.
-  // Use sin(time), which curves between -1 and 1 over time,
-  // to determine the mix of two colors:
-  //    (a) Base color.
-  //    (b) Semi-transparent color.
-  //
-  // The color itself is a vec4 containing RGBA values 0-1.
+    // Simplex noise function from GLSL simplex noise library
+    // Returns a value between -1.0 and 1.0
+    float noise(vec2 pos) {
+      return 0.5 * (1.0 + sin(dot(pos, vec2(12.9898, 78.233))));
+    }
 
-  // Pulsating value created by sin function
-  float pulse = 0.5 + 0.5 * sin(time * 1.0);
+    void main() {
+      float time = timeMsec / 1000.0; // Convert from A-Frame milliseconds to typical time in seconds.
 
-  // Add a small positive offset to the pulsating value to ensure
-  // that the base color never becomes completely black
-  pulse = 0.1 + 0.9 * pulse;
+      // Generate a random pulsating value using simplex noise
+      float randomValue = 0.5 + 0.5 * noise(vec2(time * 2.0, time * 3.0));
 
-  // Modify the base color to create a pulsating effect
-  vec4 baseColor = vec4(color, 1.0);
-  baseColor.rgb *= pulse;
+      // Modify the base color to create a pulsating effect
+      vec4 baseColor = vec4(color, 1.0);
+      baseColor.rgb *= randomValue;
 
-  // Create a semi-transparent color by setting the alpha channel to 0.5
-  vec4 transparentColor = vec4(color, 0.5);
+      // Create a semi-transparent color by setting the alpha channel to 0.5
+      vec4 transparentColor = vec4(color, 0.5);
 
-  gl_FragColor = mix(
-    baseColor,
-    transparentColor,
-    pulse // Use the pulsating value to determine the mix of colors
-  );
-}
-`,
+      gl_FragColor = mix(
+        baseColor,
+        transparentColor,
+        randomValue // Use the pulsating value to determine the mix of colors
+      );
+    }
+  `,
+})
+
+// flicker shader with hard edges
+AFRAME.registerShader('depth', {
+  schema: {
+    color: { type: 'color', is: 'uniform' },
+    timeMsec: { type: 'time', is: 'uniform' },
+  },
+  vertexShader: `
+
+  varying vec2 vUv;
+
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+  `,
+  fragmentShader: `
+  varying vec2 vUv;
+
+  void main() {
+    float depth = vUv.y; // Use the Y coordinate of the UV map as depth
+    gl_FragColor = vec4(vec3(depth), 1.0); // Use depth as the color
+  }
+  `,
+})
+
+// custom shader for flicker effect
+AFRAME.registerShader('flicker', {
+  schema: {
+    color: { type: 'color', is: 'uniform' },
+    timeMsec: { type: 'time', is: 'uniform' },
+  },
+
+  vertexShader: `
+    varying vec2 vUv;
+
+    // Define a varying for the transformed normal
+    varying vec3 vNormal;
+
+    void main() {
+      vUv = uv;
+
+      // Transform the normal vector by the model-view matrix
+      vNormal = normalize(normalMatrix * normal);
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
+    }
+  `,
+
+  fragmentShader: `
+    varying vec2 vUv;
+    varying vec3 vNormal;
+    uniform vec3 color;
+    uniform float timeMsec;
+
+    void main() {
+      float time = timeMsec / 1000.0;
+
+      float period = 5.0 + 5.0 * sin(time / 10.0);
+      float pulse = 0.5 + 0.5 * sin(time / period);
+
+      vec4 baseColor = vec4(color, 1.0);
+      baseColor.rgb *= pulse;
+
+      vec4 transparentColor = vec4(color, 0.5);
+
+      // Calculate the amount of edge highlighting based on the angle between the normal and the view vector
+      float edgeHighlight = max(0.0, dot(normalize(vNormal), normalize(-vec3(gl_FragCoord))));
+      edgeHighlight = pow(edgeHighlight, 10.0);
+
+      // Add the edge highlighting to the base color
+      baseColor.rgb += edgeHighlight;
+
+      gl_FragColor = mix(
+        baseColor,
+        transparentColor,
+        pulse
+      );
+    }
+  `,
 })

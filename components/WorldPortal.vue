@@ -1,7 +1,7 @@
 <template>
   <div id="ar-div" class="cantap">
     <!-- Loading Modal -->
-    <div id="loading-modal">
+    <!-- <div id="loading-modal">
       <div id="loading-modal-content">
         <video
           id="intro-video"
@@ -20,7 +20,7 @@
         This prototype demonstrates augmented reality functionality and
         potential.<br />It is not related to client work.
       </div>
-    </div>
+    </div> -->
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
       <div id="ui">
@@ -52,7 +52,6 @@
 
     <!-- Scene -->
     <a-scene
-      loading
       light="defaultLightsEnabled: false"
       ui-controls
       xrextras-runtime-error
@@ -177,12 +176,14 @@
 
         <!-- Tetra -->
         <a-cone
-          material="shader: pulse; color: white; timeMsec: 10000;"
+          id="tetra"
+          material="shader: depth; color: white; timeMsec: 50000;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
           position="0 6 -7"
           shadow="receive: false"
+          spin="speed: 15000"
         >
           <a-entity
             id="positional-hum"
@@ -209,6 +210,14 @@
         shadow="receive: false"
       >
       </a-entity>
+      <!-- Portal outer glow effect -->
+      <!-- <a-entity
+        id="outerRim"
+        geometry="primitive: triangle"
+        material="wireframe: true"
+        position="0 8.65 -0.2"
+      >
+      </a-entity> -->
     </a-scene>
   </div>
 </template>

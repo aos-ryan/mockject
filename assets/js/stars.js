@@ -7,6 +7,9 @@ const glowingStars = {
     const colors = ['#ffffff', '#ffff00', '#00ffff']
 
     for (let i = 0; i < count; i++) {
+      const randomTime = () => {
+        Math.floor(Math.random() * 10001) + 10000
+      }
       const star = document.createElement('a-sphere')
       star.setAttribute('position', {
         x: Math.floor(Math.random() * (40 - -20 + 1) + -40),
@@ -19,7 +22,7 @@ const glowingStars = {
         colors[Math.floor(Math.random() * colors.length)]
       )
 
-      star.setAttribute('material', 'shader: pulse;')
+      star.setAttribute('material', `shader: pulse; timeMsec: ${randomTime()}`)
 
       this.el.appendChild(star)
     }
