@@ -60,13 +60,6 @@ const tapToPlacePortalComponent = {
         to: '2 2 2',
         easing: 'linear',
       })
-      outerRim.setAttribute('animation__3', {
-        property: 'scale',
-        dur: 500,
-        from: '0.001 0.001 0.001',
-        to: '13 11 11',
-        easing: 'linear',
-      })
       tetra.setAttribute('animation__move', {
         property: 'position',
         to: {

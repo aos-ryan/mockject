@@ -50,7 +50,14 @@ export default {
   modules: ['@nuxtjs/dotenv'],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
+  build: {
+    extend(config, { isDev, isClient }) {
+      config.module.rules.push({
+        test: /\.(glsl|vert|frag)$/,
+        loader: 'raw-loader',
+      })
+    },
+  },
   server: {
     host: '0.0.0.0',
     port: 3443,

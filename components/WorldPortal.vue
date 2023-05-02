@@ -197,7 +197,7 @@
         >
         </a-entity>
         <!-- Stars -->
-        <a-entity glowing-stars="count: 1000"></a-entity>
+        <a-entity explode position="0 6 -7"></a-entity>
       </a-entity>
 
       <!-- Portal -->
