@@ -143,20 +143,20 @@
         </a-entity>
 
         <a-entity id="portal-wall">
-          <a-circle
-            radius="5.2"
+          <a-entity
+            geometry="primitive: triangle"
             rotation="0 180 0"
-            position="0 7.5 0"
-            scale="0.8 0.8 0"
+            position="0 8.517 0"
+            scale="11.44 9.69 0"
             xrextras-hider-material
-          ></a-circle>
-          <a-circle
-            radius="5.2"
+          ></a-entity>
+          <a-entity
+            geometry="primitive: triangle"
             rotation="0 180 0"
-            position="0 7.5 0.25"
-            scale="0.8 0.8 0"
+            position="0 8.517 0.25"
+            scale="11.44 9.69 0"
             xrextras-hider-material
-          ></a-circle>
+          ></a-entity>
         </a-entity>
       </xrextras-opaque-background>
 

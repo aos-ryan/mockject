@@ -53,10 +53,12 @@
       loading
       ui-controls
       xrextras-runtime-error
+      light="defaultLightsEnabled: false"
       renderer="colorManagement: true"
     >
       <a-assets>
         <img id="sky" src="/textures/sky.png" />
+        <img id="steel" src="/textures/steel_albedo.png" />
         <audio
           id="intro"
           src="/sounds/positive-correct.wav"
@@ -78,7 +80,7 @@
         ></a-ring>
 
         <a-cone
-          material="shader: depth; color: white; timeMsec: 10000;"
+          material="color: white;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
@@ -88,6 +90,8 @@
           reflections="type: static"
         >
         </a-cone>
+        <a-entity light="type: spot; target: #ball" position="2 2 0.5">
+        </a-entity>
 
         <a-sky rotation="0 90 0" scale="0.015 0.015 -0.015" src="#sky"></a-sky>
       </a-entity>
