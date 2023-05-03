@@ -60,7 +60,7 @@ const tapToPlacePortalComponent = {
         to: '2 2 2',
         easing: 'linear',
       })
-      tetra.setAttribute('animation__move', {
+      tetra.setAttribute('animation__bob', {
         property: 'position',
         to: {
           y: 8,
@@ -70,31 +70,6 @@ const tapToPlacePortalComponent = {
         loop: true,
         easing: 'easeInOutCubic',
       })
-      tetra.addEventListener('animationcomplete__shrink', (e) => {
-        const explosion = document.createElement('a-entity')
-        explosion.setAttribute('explode', true)
-        explosion.setAttribute('position', { x: 0, y: 6, z: -7 })
-        explosion.setAttribute('animation__scaleup', {
-          property: 'scale',
-          dur: 500,
-          from: '0.001 0.001 0.001',
-          to: '1 1 1',
-          easing: 'linear',
-        })
-        this.el.appendChild(explosion)
-      })
-      setTimeout(() => {
-        tetra.setAttribute('animation__shrink', {
-          property: 'scale',
-          to: {
-            x: 0,
-            y: 0,
-            z: 0,
-          },
-          dur: 1000,
-          easing: 'linear',
-        })
-      }, 5000)
       humSound.components.sound.playSound()
       sceneEl.removeEventListener('click', firstPlaceEvent)
     }

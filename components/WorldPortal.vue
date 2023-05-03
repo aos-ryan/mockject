@@ -1,7 +1,7 @@
 <template>
   <div id="ar-div" class="cantap">
     <!-- Loading Modal -->
-    <!-- <div id="loading-modal">
+    <div id="loading-modal">
       <div id="loading-modal-content">
         <video
           id="intro-video"
@@ -20,7 +20,7 @@
         This prototype demonstrates augmented reality functionality and
         potential.<br />It is not related to client work.
       </div>
-    </div> -->
+    </div>
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
       <div id="ui">
@@ -52,6 +52,7 @@
 
     <!-- Scene -->
     <a-scene
+      loading
       light="defaultLightsEnabled: false"
       ui-controls
       xrextras-runtime-error
@@ -73,7 +74,13 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-camera id="camera" position="0 9 9" portal-camera>
+      <a-camera
+        id="camera"
+        position="0 9 9"
+        portal-camera
+        raycaster="objects: .collidable; showLine: true; far: 5"
+        collider-check
+      >
         <a-entity
           light="type: point; intensity: 0.75; distance: 50; decay: 4"
         ></a-entity>
@@ -177,6 +184,7 @@
         <!-- Tetra -->
         <a-cone
           id="tetra"
+          class="collidable"
           material="shader: depth; color: white; timeMsec: 50000;"
           segments-radial="4"
           height="2.5"

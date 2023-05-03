@@ -10,6 +10,7 @@ import { uiControls } from '~/assets/js/uiControls'
 import { rotateComponent } from '~/assets/js/rotate'
 import { glowingStars } from '~/assets/js/stars'
 import { explosion } from '~/assets/js/explosion'
+import { colliderCheck } from '~/assets/js/colliderCheck'
 
 AFRAME.registerComponent('portal-camera', portalCameraComponent)
 AFRAME.registerComponent('prompt-flow', promptFlowComponent)
@@ -32,6 +33,7 @@ AFRAME.registerComponent('glowing-stars', glowingStars)
 
 AFRAME.registerComponent('rotate', rotateComponent)
 AFRAME.registerComponent('explode', explosion)
+AFRAME.registerComponent('collider-check', colliderCheck)
 
 // Custom shader for pulse effect
 AFRAME.registerShader('pulse', {
