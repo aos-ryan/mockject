@@ -10,13 +10,21 @@ const explosion = {
 
     const positions = []
     const offsets = []
+    const brandColors = [
+      [1.0, 0.94, 0.16, 1.0],
+      [0.0, 0.0, 0.0, 1.0],
+      [0.93, 0.93, 0.93, 1.0],
+      [1.0, 1.0, 1.0, 1.0],
+    ]
     const colors = []
+    let colorSetCounter = 0
+
     const orientationsStart = []
     const orientationsEnd = []
 
-    positions.push(0.025, -0.025, 0)
-    positions.push(-0.025, 0.025, 0)
-    positions.push(0, 0, 0.025)
+    positions.push(0, 0, 0)
+    positions.push(0.25, 0, 0)
+    positions.push(0.125, 0.2165, 0)
 
     for (let i = 0; i < instances; i++) {
       // offsets
@@ -24,8 +32,9 @@ const explosion = {
       offsets.push(Math.random() * 3, Math.random() * 3, Math.random() * 3)
 
       // colors
-
-      colors.push(Math.random(), Math.random(), Math.random(), Math.random())
+      const colorSet = brandColors[colorSetCounter]
+      colors.push(...colorSet)
+      colorSetCounter = (colorSetCounter + 1) % brandColors.length
 
       // orientation start
 

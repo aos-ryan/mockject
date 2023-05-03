@@ -16,7 +16,7 @@
 
   void main(){
 
-    vPosition = offset * max( abs( sineTime * 2.0 + 1.0 ), 0.5 ) + position;
+    vPosition = offset + position + vec3(max(0.9, sineTime - 1.0) * 15.0, 0.0, 0.0);
     vec4 orientation = normalize( mix( orientationStart, orientationEnd, sineTime ) );
     vec3 vcV = cross( orientation.xyz, vPosition );
     vPosition = vcV * ( 2.0 * orientation.w ) + ( cross( orientation.xyz, vcV ) * 2.0 + vPosition );

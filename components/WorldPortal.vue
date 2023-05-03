@@ -1,7 +1,7 @@
 <template>
   <div id="ar-div" class="cantap">
     <!-- Loading Modal -->
-    <div id="loading-modal">
+    <!-- <div id="loading-modal">
       <div id="loading-modal-content">
         <video
           id="intro-video"
@@ -20,7 +20,7 @@
         This prototype demonstrates augmented reality functionality and
         potential.<br />It is not related to client work.
       </div>
-    </div>
+    </div> -->
     <!-- UI -->
     <div id="overlay" class="absolute-fill">
       <div id="ui">
@@ -52,7 +52,6 @@
 
     <!-- Scene -->
     <a-scene
-      loading
       light="defaultLightsEnabled: false"
       ui-controls
       xrextras-runtime-error

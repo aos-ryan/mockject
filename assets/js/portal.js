@@ -65,6 +65,7 @@ const tapToPlacePortalComponent = {
         to: {
           y: 8,
         },
+        dur: 3000,
         dir: 'alternate',
         loop: true,
         easing: 'easeInOutCubic',
