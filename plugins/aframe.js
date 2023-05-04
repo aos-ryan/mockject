@@ -8,7 +8,6 @@ import { imageTargetPortalComponent } from '~/assets/js/imagePortal'
 import { loadingComponent } from '~/assets/js/loading'
 import { uiControls } from '~/assets/js/uiControls'
 import { rotateComponent } from '~/assets/js/rotate'
-import { glowingStars } from '~/assets/js/stars'
 import { explosion } from '~/assets/js/explosion'
 import { colliderCheck } from '~/assets/js/colliderCheck'
 
@@ -29,7 +28,6 @@ AFRAME.registerComponent('auto-play-video', {
 AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
 AFRAME.registerComponent('loading', loadingComponent)
 AFRAME.registerComponent('ui-controls', uiControls)
-AFRAME.registerComponent('glowing-stars', glowingStars)
 
 AFRAME.registerComponent('rotate', rotateComponent)
 AFRAME.registerComponent('explode', explosion)

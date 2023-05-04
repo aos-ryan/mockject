@@ -74,13 +74,12 @@
       </a-assets>
 
       <!-- Camera -->
-      <a-camera
-        id="camera"
-        position="0 9 9"
-        portal-camera
-        raycaster="objects: .collidable; showLine: true; far: 5"
-        collider-check
-      >
+      <a-camera id="camera" position="0 9 9" portal-camera fov="90">
+        <a-entity
+          raycaster="objects: .collidable; showLine: true; far: 5"
+          collider-check
+        >
+        </a-entity>
         <a-entity
           light="type: point; intensity: 0.75; distance: 50; decay: 4"
         ></a-entity>
@@ -204,8 +203,6 @@
           position="0 11 -7"
         >
         </a-entity>
-        <!-- Stars -->
-        <!-- <a-entity explode position="0 6 -7"></a-entity> -->
       </a-entity>
 
       <!-- Portal -->
@@ -218,14 +215,6 @@
         shadow="receive: false"
       >
       </a-entity>
-      <!-- Portal outer glow effect -->
-      <!-- <a-entity
-        id="outerRim"
-        geometry="primitive: triangle"
-        material="wireframe: true"
-        position="0 8.65 -0.2"
-      >
-      </a-entity> -->
     </a-scene>
   </div>
 </template>

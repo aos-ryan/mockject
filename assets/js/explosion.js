@@ -10,6 +10,7 @@ const explosion = {
 
     const positions = []
     const offsets = []
+    // array of colours that is cycled through on each iteration of the for loop
     const brandColors = [
       [1.0, 0.94, 0.16, 1.0],
       [0.0, 0.0, 0.0, 1.0],
@@ -21,7 +22,7 @@ const explosion = {
 
     const orientationsStart = []
     const orientationsEnd = []
-
+    // position of the vertices for each shape created by instance buffer geometry, these stay the same each instance
     positions.push(0, 0, 0)
     positions.push(0.25, 0, 0)
     positions.push(0.125, 0.2165, 0)
