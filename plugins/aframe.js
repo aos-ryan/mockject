@@ -125,7 +125,8 @@ AFRAME.registerShader('depth-to-transparent', {
 
   void main() {
     float depth = vUv.y;
-    gl_FragColor = vec4(vec3(depth), 1.0 - depth); // set alpha to (1 - depth)
+    float alpha = 0.6 - depth + 0.1; // add a small value to prevent complete black
+    gl_FragColor = vec4(vec3(depth), alpha);
   }
   `,
 })

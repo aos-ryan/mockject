@@ -50,6 +50,7 @@
     </div>
 
     <a-scene
+      light="defaultLightsEnabled: false"
       loading
       ui-controls
       xrextras-runtime-error
@@ -79,7 +80,7 @@
         ></a-ring>
 
         <a-cone
-          material="shader: depth-to-transparent"
+          material="shader: depth-to-transparent;"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
@@ -89,8 +90,8 @@
           reflections="type: static"
         >
         </a-cone>
-        <!-- <a-entity light="type: spot; target: #ball" position="2 2 0.5">
-        </a-entity> -->
+        <a-entity light="type: spot; target: #ball" position="0 2 0.5">
+        </a-entity>
 
         <a-sky rotation="0 90 0" scale="0.015 0.015 -0.015" src="#sky"></a-sky>
       </a-entity>

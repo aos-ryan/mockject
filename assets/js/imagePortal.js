@@ -50,6 +50,18 @@ const imageTargetPortalComponent = () => ({
           easing: 'easeOutQuad',
         })
       }, 2000)
+      ball.addEventListener('animationcomplete__moveOut', () => {
+        ball.setAttribute('animation__bob', {
+          property: 'position',
+          to: {
+            y: 0.5,
+          },
+          dur: 3000,
+          dir: 'alternate',
+          loop: true,
+          easing: 'easeInOutCubic',
+        })
+      })
     }
     const imageLost = (e) => {
       object3D.visible = false
