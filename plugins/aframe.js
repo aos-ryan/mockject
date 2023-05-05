@@ -106,6 +106,30 @@ AFRAME.registerShader('depth', {
   `,
 })
 
+AFRAME.registerShader('depth-to-transparent', {
+  schema: {
+    color: { type: 'color', is: 'uniform' },
+    timeMsec: { type: 'time', is: 'uniform' },
+  },
+  vertexShader: `
+
+  varying vec2 vUv;
+
+  void main() {
+    vUv = uv;
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+  }
+  `,
+  fragmentShader: `
+  varying vec2 vUv;
+
+  void main() {
+    float depth = vUv.y;
+    gl_FragColor = vec4(vec3(depth), 1.0 - depth); // set alpha to (1 - depth)
+  }
+  `,
+})
+
 // custom shader for flicker effect
 AFRAME.registerShader('flicker', {
   schema: {

@@ -79,7 +79,7 @@
         ></a-ring>
 
         <a-cone
-          material="shader: standard"
+          material="shader: depth-to-transparent"
           segments-radial="4"
           height="2.5"
           radius-bottom="2"
